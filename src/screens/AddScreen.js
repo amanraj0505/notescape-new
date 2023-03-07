@@ -48,7 +48,7 @@ function AddScreen() {
           }}>
           <TouchableOpacity>
             <Image
-              source={require('../assets/images/paint-palette.png')}
+              source={require('../assets/images/settings.png')}
               resizeMode={'contain'}
               style={{
                 height: 15,
@@ -59,7 +59,7 @@ function AddScreen() {
           </TouchableOpacity>
           <TouchableOpacity>
             <Image
-              source={require('../assets/images/undo.png')}
+              source={require('../assets/images/settings.png')}
               resizeMode={'contain'}
               style={{
                 height: 15,
@@ -70,7 +70,7 @@ function AddScreen() {
           </TouchableOpacity>
           <TouchableOpacity>
             <Image
-              source={require('../assets/images/tick.png')}
+              source={require('../assets/images/settings.png')}
               resizeMode={'contain'}
               style={{
                 height: 15,

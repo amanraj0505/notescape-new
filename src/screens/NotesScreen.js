@@ -68,7 +68,7 @@ function NotesScreen(props) {
             }}
             activeOpacity={0.5}>
             <Image
-              source={require('../assets/images/search.png')}
+              source={require('../assets/images/notes.png')}
               resizeMode={'contain'}
               style={{
                 height: 18,

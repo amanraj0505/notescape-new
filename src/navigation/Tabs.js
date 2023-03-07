@@ -4,11 +4,11 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {
   NotesScreen,
   PasswordScreen,
-  CardScreen,
   SettingsScreen,
   AddScreen,
+  HiddenScreen,
 } from '../screens';
-import {StyleSheet, Text, View, Image} from 'react-native';
+import {Text, View, Image} from 'react-native';
 import {TabStyles} from '../styles/styles';
 import {getFocusedRouteNameFromRoute} from '@react-navigation/native';
 const Tab = createBottomTabNavigator();
@@ -22,7 +22,6 @@ const NotesScreenStacks = ({navigation, route}) => {
       navigation.setOptions({
         tabBarShowLabel: false,
         tabBarStyle: {
-          ...styles.shadow,
           ...TabStyles.tabBarStyle,
         },
         headerShown: false,
@@ -39,13 +38,12 @@ const NotesScreenStacks = ({navigation, route}) => {
     </NotesScreenStack.Navigator>
   );
 };
-const Tabs = () => {
+function Tabs() {
   return (
     <Tab.Navigator
       screenOptions={{
         tabBarShowLabel: false,
         tabBarStyle: {
-          ...styles.shadow,
           ...TabStyles.tabBarStyle,
         },
         headerShown: false,
@@ -61,14 +59,15 @@ const Tabs = () => {
                   source={require('../assets/images/notes.png')}
                   style={{
                     ...TabStyles.tabIcon,
-                    tintColor: focused ? '#2196F3' : '#a5b1c2',
+                    tintColor: focused ? '#3A85F7' : '#1C2121',
                   }}
                   resizeMode={'contain'}
                 />
                 <Text
                   style={{
-                    color: focused ? '#2196F3' : '#a5b1c2',
+                    color: focused ? '#3A85F7' : '#1C2121',
                     marginTop: 5,
+                    opacity: 0.7,
                   }}>
                   Notes
                 </Text>
@@ -88,14 +87,15 @@ const Tabs = () => {
                   source={require('../assets/images/key.png')}
                   style={{
                     ...TabStyles.tabIcon,
-                    tintColor: focused ? '#2196F3' : '#a5b1c2',
+                    tintColor: focused ? '#3A85F7' : '#1C2121',
                   }}
                   resizeMode={'contain'}
                 />
                 <Text
                   style={{
-                    color: focused ? '#2196F3' : '#a5b1c2',
+                    color: focused ? '#3A85F7' : '#1C2121',
                     marginTop: 5,
+                    opacity: 0.7,
                   }}>
                   Passwords
                 </Text>
@@ -105,26 +105,27 @@ const Tabs = () => {
         }}
       />
       <Tab.Screen
-        name="Card"
-        component={CardScreen}
+        name="Hidden"
+        component={HiddenScreen}
         options={{
           tabBarIcon: ({focused}) => {
             return (
               <View style={TabStyles.tabIconView}>
                 <Image
-                  source={require('../assets/images/credit-card.png')}
+                  source={require('../assets/images/hidden.png')}
                   style={{
                     ...TabStyles.tabIcon,
-                    tintColor: focused ? '#2196F3' : '#a5b1c2',
+                    tintColor: focused ? '#3A85F7' : '#1C2121',
                   }}
                   resizeMode={'contain'}
                 />
                 <Text
                   style={{
-                    color: focused ? '#2196F3' : '#a5b1c2',
+                    color: focused ? '#3A85F7' : '#1C2121',
                     marginTop: 5,
+                    opacity: 0.7,
                   }}>
-                  Cards
+                  Hidden
                 </Text>
               </View>
             );
@@ -142,14 +143,15 @@ const Tabs = () => {
                   source={require('../assets/images/settings.png')}
                   style={{
                     ...TabStyles.tabIcon,
-                    tintColor: focused ? '#2196F3' : '#a5b1c2',
+                    tintColor: focused ? '#3A85F7' : '#1C2121',
                   }}
                   resizeMode={'contain'}
                 />
                 <Text
                   style={{
-                    color: focused ? '#2196F3' : '#a5b1c2',
+                    color: focused ? '#3A85F7' : '#1C2121',
                     marginTop: 5,
+                    opacity: 0.7,
                   }}>
                   Settings
                 </Text>
@@ -160,17 +162,5 @@ const Tabs = () => {
       />
     </Tab.Navigator>
   );
-};
-const styles = StyleSheet.create({
-  shadow: {
-    shadowColor: '#2196F3',
-    shadowOffset: {
-      width: 10,
-      height: 10,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.5,
-    elevation: 5,
-  },
-});
+}
 export default Tabs;
