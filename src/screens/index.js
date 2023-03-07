@@ -4,3 +4,4 @@ export {default as SettingsScreen} from './SettingsScreen';
 export {default as AddScreen} from './AddScreen';
 export {default as OnboardingScreen} from './OnboardingScreen';
 export {default as HiddenScreen} from './HiddenScreen';
+export {default as AddPasswordScreen} from './AddPasswordScreen';

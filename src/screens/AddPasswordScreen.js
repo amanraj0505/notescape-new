@@ -8,7 +8,7 @@ import {
   TextInput,
   StatusBar,
 } from 'react-native';
-function AddScreen({navigation}) {
+function AddPasswordScreen({navigation}) {
   const inputRef = useRef();
   return (
     <SafeAreaView
@@ -116,4 +116,4 @@ function AddScreen({navigation}) {
   );
 }
 
-export default AddScreen;
+export default AddPasswordScreen;

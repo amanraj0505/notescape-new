@@ -8,17 +8,15 @@ function SearchBox({textOnChange, searchText}) {
       style={{
         flexDirection: 'row',
         width: '100%',
-        padding: 10,
+        paddingHorizontal: 22,
       }}>
       <TextInput
         style={{
-          borderWidth: 1,
-          borderRadius: 20,
+          borderRadius: 10,
           flex: 4,
-          borderColor: '#a5b1c2',
           height: 40,
-          padding: 10,
-          color: '#000',
+          paddingHorizontal: 20,
+          backgroundColor: '#FFFFFF',
         }}
         placeholder={'Search Notes...'}
         placeholderTextColor={'#a5b1c2'}

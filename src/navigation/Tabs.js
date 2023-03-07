@@ -1,22 +1,23 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {createStackNavigator, TransitionPresets} from '@react-navigation/stack';
 import {
   NotesScreen,
   PasswordScreen,
   SettingsScreen,
   AddScreen,
   HiddenScreen,
+  AddPasswordScreen,
 } from '../screens';
 import {Text, View, Image} from 'react-native';
 import {TabStyles} from '../styles/styles';
 import {getFocusedRouteNameFromRoute} from '@react-navigation/native';
 const Tab = createBottomTabNavigator();
-const NotesScreenStack = createNativeStackNavigator();
+const NotesScreenStack = createStackNavigator();
 const NotesScreenStacks = ({navigation, route}) => {
   React.useLayoutEffect(() => {
     const routeName = getFocusedRouteNameFromRoute(route);
-    if (routeName === 'Add') {
+    if (routeName === 'Add' || routeName === 'AddPassword') {
       navigation.setOptions({tabBarStyle: {display: 'none'}});
     } else {
       navigation.setOptions({
@@ -31,10 +32,15 @@ const NotesScreenStacks = ({navigation, route}) => {
   return (
     <NotesScreenStack.Navigator
       screenOptions={{
+        ...TransitionPresets.ModalPresentationIOS,
         headerShown: false,
       }}>
       <NotesScreenStack.Screen name="Notes" component={NotesScreen} />
       <NotesScreenStack.Screen name="Add" component={AddScreen} />
+      <NotesScreenStack.Screen
+        name="AddPassword"
+        component={AddPasswordScreen}
+      />
     </NotesScreenStack.Navigator>
   );
 };
