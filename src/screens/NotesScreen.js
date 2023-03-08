@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Text,
   StatusBar,
+  FlatList,
 } from 'react-native';
 import {SearchBox, AddActionSheet} from '../components';
 import {
@@ -118,9 +119,7 @@ function NotesScreen(props) {
           style={{
             flex: 7,
             backgroundColor: '#F2F2F6',
-          }}>
-          <SearchBox />
-        </View>
+          }}></View>
       </SafeAreaView>
     </SheetProvider>
   );
