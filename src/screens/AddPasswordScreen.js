@@ -91,7 +91,22 @@ function AddPasswordScreen({navigation}) {
             fontWeight: 'bold',
             lineHeight: 42,
           }}
-          placeholder={'Title'}
+          placeholder={'Website/Password title'}
+          placeholderTextColor={'#B2B2B2'}
+          place
+        />
+        <TextInput
+          style={{
+            borderRadius: 20,
+            padding: 10,
+            color: '#000',
+            marginTop: 5,
+            flexWrap: 'wrap',
+            marginHorizontal: 15,
+            fontSize: 18,
+            lineHeight: 42,
+          }}
+          placeholder={'Description'}
           placeholderTextColor={'#B2B2B2'}
           place
         />
@@ -106,7 +121,7 @@ function AddPasswordScreen({navigation}) {
             fontSize: 16,
             lineHeight: 42,
           }}
-          placeholder={'Type Notes Here..'}
+          placeholder={'Type Password Here..'}
           multiline={true}
           placeholderTextColor={'#B2B2B2'}
           ref={inputRef}

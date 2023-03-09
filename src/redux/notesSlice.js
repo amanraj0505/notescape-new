@@ -1,7 +1,78 @@
 import {createSlice} from '@reduxjs/toolkit';
 
 const initialState = {
-  data: [],
+  data: [
+    {
+      id: '1',
+      title: 'Note1',
+      type: 'note',
+      content:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam cum ligula justo.Nisi, consectetur elementum.',
+    },
+    {
+      id: '2',
+      title: 'Note2',
+      type: 'note',
+      content:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam cum ligula justo.Nisi, consectetur elementum.',
+    },
+    {
+      id: '3',
+      title: 'Note3',
+      type: 'note',
+      content:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam cum ligula justo.Nisi, consectetur elementum.',
+    },
+    {
+      id: '4',
+      type: 'note',
+      title: 'Lorem ipsum dolor sit amet, consectetur adipiscing',
+      content:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam cum ligula justo.Nisi, consectetur elementum.',
+    },
+    {
+      id: '5',
+      title: 'Note5',
+      type: 'note',
+      content:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam cum ligula justo.Nisi, consectetur elementum.',
+    },
+    {
+      id: '6',
+      title: 'Note6',
+      type: 'note',
+      content:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam cum ligula justo.Nisi, consectetur elementum.',
+    },
+    {
+      id: '6a',
+      title: 'Note6',
+      type: 'note',
+      content:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam cum ligula justo.Nisi, consectetur elementum.',
+    },
+    {
+      id: '7',
+      title: 'FaceBook',
+      type: 'password',
+      description: 'Dyson Account',
+      content: 'InteliApp@123',
+    },
+    {
+      id: '8',
+      title: 'Google',
+      type: 'password',
+      description: 'CNW Account',
+      content: 'InteliApp@321',
+    },
+    {
+      id: '9',
+      title: 'Google',
+      type: 'password',
+      description: 'CNW Account',
+      content: 'InteliApp@321',
+    },
+  ],
 };
 
 export const notesSlice = createSlice({

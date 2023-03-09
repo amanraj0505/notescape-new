@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import {
   SafeAreaView,
   View,
@@ -7,15 +7,26 @@ import {
   Text,
   StatusBar,
   FlatList,
+  useWindowDimensions,
 } from 'react-native';
-import {SearchBox, AddActionSheet} from '../components';
+import {SearchBox, AddActionSheet, NoteItem} from '../components';
 import {
   SheetManager,
   registerSheet,
   SheetProvider,
 } from 'react-native-actions-sheet';
+import {useSelector, useDispatch} from 'react-redux';
+import {addNotes, deleteNotes} from '../redux/notesSlice';
 function NotesScreen(props) {
   registerSheet('add-actionsheet', AddActionSheet);
+  const renderItem = useCallback(
+    ({item}) => <NoteItem title={item.title} content={item.content} />,
+    [
+      useSelector(state => state.notes.data).filter(
+        item => item.type === 'note',
+      ),
+    ],
+  );
   return (
     <SheetProvider>
       <SafeAreaView
@@ -31,11 +42,12 @@ function NotesScreen(props) {
         />
         <View
           style={{
-            flex: 1,
+            height: 75,
             flexDirection: 'row',
             justifyContent: 'center',
             alignItems: 'center',
-            marginHorizontal: 22,
+            marginHorizontal: 15,
+            marginBottom: 10,
           }}>
           <View
             style={{
@@ -115,11 +127,24 @@ function NotesScreen(props) {
             </TouchableOpacity>
           </View>
         </View>
-        <View
-          style={{
-            flex: 7,
-            backgroundColor: '#F2F2F6',
-          }}></View>
+        <SearchBox />
+        <View style={{flex: 1}}>
+          <FlatList
+            data={useSelector(state => state.notes.data).filter(
+              item => item.type === 'note',
+            )}
+            renderItem={renderItem}
+            keyExtractor={item => item.id}
+            numColumns={2}
+            contentContainerStyle={{
+              paddingLeft: 15,
+              justifyContent: 'space-between',
+              marginTop: 15,
+              paddingRight: 25, // 10 for covering margin space and 10 for covering paddingleft
+              paddingBottom: 15,
+            }}
+          />
+        </View>
       </SafeAreaView>
     </SheetProvider>
   );

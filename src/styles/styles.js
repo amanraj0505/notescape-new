@@ -10,9 +10,8 @@ export const TabStyles = {
     alignItems: 'center',
   },
   tabBarStyle: {
-    position: 'absolute',
     elevation: 0,
     backgroundColor: '#fff',
-    height: 80,
+    height: 70,
   },
 };

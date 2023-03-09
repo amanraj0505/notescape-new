@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import {
   SafeAreaView,
   View,
@@ -6,15 +6,29 @@ import {
   TouchableOpacity,
   Text,
   StatusBar,
+  FlatList,
+  useWindowDimensions,
 } from 'react-native';
-import {SearchBox, AddActionSheet} from '../components';
+import {SearchBox, AddActionSheet, PasswordItem} from '../components';
 import {
   SheetManager,
   registerSheet,
   SheetProvider,
 } from 'react-native-actions-sheet';
+import {useSelector, useDispatch} from 'react-redux';
+import {addNotes, deleteNotes} from '../redux/notesSlice';
 function PasswordScreen(props) {
   registerSheet('add-actionsheet', AddActionSheet);
+  const renderItem = useCallback(
+    ({item}) => (
+      <PasswordItem title={item.title} description={item.description} />
+    ),
+    [
+      useSelector(state => state.notes.data).filter(
+        item => item.type === 'password',
+      ),
+    ],
+  );
   return (
     <SheetProvider>
       <SafeAreaView
@@ -30,11 +44,12 @@ function PasswordScreen(props) {
         />
         <View
           style={{
-            flex: 1,
+            height: 75,
             flexDirection: 'row',
             justifyContent: 'center',
             alignItems: 'center',
-            marginHorizontal: 22,
+            marginHorizontal: 15,
+            marginBottom: 10,
           }}>
           <View
             style={{
@@ -77,7 +92,7 @@ function PasswordScreen(props) {
                 fontSize: 26,
                 fontWeight: 'bold',
               }}>
-              Notes
+              Passwords
             </Text>
           </View>
           <View
@@ -114,12 +129,20 @@ function PasswordScreen(props) {
             </TouchableOpacity>
           </View>
         </View>
-        <View
-          style={{
-            flex: 7,
-            backgroundColor: '#F2F2F6',
-          }}>
-          <SearchBox />
+        <SearchBox />
+        <View style={{flex: 1}}>
+          <FlatList
+            data={useSelector(state => state.notes.data).filter(
+              item => item.type === 'password',
+            )}
+            renderItem={renderItem}
+            keyExtractor={item => item.id}
+            contentContainerStyle={{
+              paddingHorizontal: 15,
+              justifyContent: 'space-between',
+              marginTop: 15,
+            }}
+          />
         </View>
       </SafeAreaView>
     </SheetProvider>
