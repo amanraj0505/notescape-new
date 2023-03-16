@@ -14,10 +14,11 @@ function HiddenScreen(props) {
       style={{
         display: 'flex',
         flex: 1,
+        backgroundColor: '#F2F2F6',
       }}>
       <StatusBar
         animated={true}
-        backgroundColor="#F6F6F6"
+        backgroundColor="#F2F2F6"
         barStyle={'dark-content'}
       />
     </SafeAreaView>

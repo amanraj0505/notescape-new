@@ -7,6 +7,7 @@ import Tabs from './src/navigation/Tabs';
 import {OnboardingScreen} from './src/screens';
 import {store} from './src/redux/store';
 import {Provider} from 'react-redux';
+import {SheetProvider} from 'react-native-actions-sheet';
 const OnBoardingStack = createStackNavigator();
 const App = () => {
   const [onboardingDone, setOnboardingDone] = useState(null);
@@ -17,21 +18,23 @@ const App = () => {
   }, []);
   return (
     <Provider store={store}>
-      <NavigationContainer>
-        <OnBoardingStack.Navigator
-          screenOptions={{
-            ...TransitionPresets.SlideFromRightIOS,
-            headerShown: false,
-          }}>
-          {!onboardingDone && (
-            <OnBoardingStack.Screen
-              name="Onboarding"
-              component={OnboardingScreen}
-            />
-          )}
-          <OnBoardingStack.Screen name="Tab" component={Tabs} />
-        </OnBoardingStack.Navigator>
-      </NavigationContainer>
+      <SheetProvider>
+        <NavigationContainer>
+          <OnBoardingStack.Navigator
+            screenOptions={{
+              ...TransitionPresets.SlideFromRightIOS,
+              headerShown: false,
+            }}>
+            {!onboardingDone && (
+              <OnBoardingStack.Screen
+                name="Onboarding"
+                component={OnboardingScreen}
+              />
+            )}
+            <OnBoardingStack.Screen name="Tab" component={Tabs} />
+          </OnBoardingStack.Navigator>
+        </NavigationContainer>
+      </SheetProvider>
     </Provider>
   );
 };

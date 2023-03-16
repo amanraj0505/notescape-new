@@ -8,8 +8,16 @@ import {
   TextInput,
   StatusBar,
 } from 'react-native';
+import {addNotes} from '../redux/notesSlice';
+import {useDispatch, useSelector} from 'react-redux';
 function AddScreen({navigation}) {
+  const [title, setTitle] = useState('');
+  const [note, setNote] = useState('');
   const inputRef = useRef();
+  const dispatch = useDispatch();
+  const lastItemID = useSelector(state => state.notes.data)[
+    useSelector(state => state.notes.data).length - 1
+  ].id;
   return (
     <SafeAreaView
       style={{
@@ -70,6 +78,17 @@ function AddScreen({navigation}) {
               alignItems: 'center',
               borderRadius: 10,
               marginRight: 22,
+            }}
+            onPress={() => {
+              dispatch(
+                addNotes({
+                  id: String(parseInt(lastItemID) + 1),
+                  title: title,
+                  content: note,
+                  type: 'note',
+                }),
+              );
+              navigation.goBack();
             }}>
             <Text style={{color: '#FFFFFF'}}>Save</Text>
           </TouchableOpacity>
@@ -93,7 +112,9 @@ function AddScreen({navigation}) {
           }}
           placeholder={'Title'}
           placeholderTextColor={'#B2B2B2'}
-          place
+          onChangeText={text => {
+            setTitle(text);
+          }}
         />
         <TextInput
           style={{
@@ -110,6 +131,9 @@ function AddScreen({navigation}) {
           multiline={true}
           placeholderTextColor={'#B2B2B2'}
           ref={inputRef}
+          onChangeText={text => {
+            setNote(text);
+          }}
         />
       </View>
     </SafeAreaView>

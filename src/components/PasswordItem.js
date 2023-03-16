@@ -7,7 +7,7 @@ function NoteItem({title, description}) {
         width: '100%',
         backgroundColor: '#F7CE45',
         borderRadius: 10,
-        padding: 10,
+        padding: 9,
         opacity: 0.7,
         marginBottom: 15,
       }}>
